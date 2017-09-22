@@ -16,8 +16,10 @@ import {
 } from 'react-native';
 
 import CommonView from './views/view0';
-import ImageView from './views/view1';
-import Timer from './views/view2';
+import ImageView from './views/imageView';
+import Timer from './views/timer';
+import Lifecycle from './views/lifecycle';
+import Native from './views/native';
 
 class MyList extends React.PureComponent {
   state = {selected: (new Map(): Map<string, boolean>)};
@@ -76,6 +78,16 @@ export default class RNDemo extends Component {
         title:"Timer",
         component: Timer,
         hideNav: true,
+      }, {
+        key:3,
+        title:"生命周期",
+        component: Lifecycle,
+        hideNav: true,
+      }, {
+        key:4,
+        title:"JS调用Native",
+        component: Native,
+        hideNav: true,
       }]
     }
   }
@@ -86,8 +98,8 @@ export default class RNDemo extends Component {
         style={styles.navigator}
         initialRoute={{
           index: 0,
-          title:'首页',//这是navigationController的title。
-          component:MyList,//注释：这里是要写的是相当于iOS开发里navigationController的rootViewController页面。
+          title:'首页'+this.props.appVersion,//navigationController 的 title
+          component:MyList,//navigationController 的 rootViewController
           passProps:{data:this.state.listItems, style:styles.container}
         }}
       />
