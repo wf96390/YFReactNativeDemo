@@ -20,6 +20,7 @@ import ImageView from './views/imageView';
 import Timer from './views/timer';
 import Lifecycle from './views/lifecycle';
 import Native from './views/native';
+import ReactView from './views/react';
 
 class MyList extends React.PureComponent {
   state = {selected: (new Map(): Map<string, boolean>)};
@@ -87,6 +88,11 @@ export default class RNDemo extends Component {
         key:4,
         title:"JS调用Native",
         component: Native,
+        hideNav: true,
+      }, {
+        key:5,
+        title:"Native调用React",
+        component: ReactView,
         hideNav: true,
       }]
     }
